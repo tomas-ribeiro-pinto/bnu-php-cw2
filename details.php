@@ -13,7 +13,7 @@ if (isset($_SESSION['id'])) {
 
    // if the form has been submitted
    if (isset($_POST['submit'])) {
-
+      
       // build an sql statment to update the student details
       $sql = "update student set firstname ='" . $_POST['txtfirstname'] . "',";
       $sql .= "lastname ='" . $_POST['txtlastname']  . "',";
@@ -25,8 +25,15 @@ if (isset($_SESSION['id'])) {
       $sql .= "where studentid = '" . $_SESSION['id'] . "';";
       $result = mysqli_query($conn,$sql);
 
-      $data['content'] = "<p>Your details have been updated</p>";
+      if(!empty($_FILES['photo']['tmp_name']))
+      {
+         $photo = $_FILES["photo"]["tmp_name"]; 
+         $imagedata = addslashes(fread(fopen($photo, "r"), filesize($photo)));
+         $sql .= "update student set photo = '" . $imagedata ."' where studentid = '" . $_SESSION['id'] . "';";
+         $result = mysqli_query($conn,$sql);
+      }
 
+      $data['content'] = "<p>Your details have been updated</p>";
    }
    else {
       // Build a SQL statment to return the student record with the id that
@@ -35,13 +42,18 @@ if (isset($_SESSION['id'])) {
       $result = mysqli_query($conn,$sql);
       $row = mysqli_fetch_array($result);
 
+      echo "<h2>My Details</h2>";
+      if(!empty($row['photo']))
+         echo "<img src='templates/getjpg.php' height='150'</td>";
+
       // using <<<EOD notation to allow building of a multi-line string
       // see http://stackoverflow.com/questions/6924193/what-is-the-use-of-eod-in-php for info
       // also http://stackoverflow.com/questions/8280360/formatting-an-array-value-inside-a-heredoc
       $data['content'] = <<<EOD
-
-   <h2>My Details</h2>
-   <form name="frmdetails" action="" method="post">
+   
+   <form name="frmdetails" enctype="multipart/form-data" action="" method="post">
+   Student Picture :
+   <input type="file" name="photo" accept="image/jpeg"/><br/>
    First Name :
    <input name="txtfirstname" type="text" value="{$row['firstname']}" /><br/>
    Surname :

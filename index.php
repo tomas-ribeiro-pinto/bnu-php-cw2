@@ -3,13 +3,17 @@
    include("_includes/config.inc");
    include("_includes/dbconnect.inc");
    include("_includes/functions.inc");
+   include("seed.php");
+
+   //Seed Database if empty
+   seedDatabse();
 
    echo template("templates/partials/header.php");
 
    if (isset($_GET['return'])) {
       $msg = "";
       if ($_GET['return'] == "fail") {$msg = "Login Failed. Please try again.";}
-      $data['message'] = "<p>$msg</p>";
+      $data['message'] = "<p class='text-danger'>" . $msg . "</p>";
    }
 
    if (isset($_SESSION['id'])) {

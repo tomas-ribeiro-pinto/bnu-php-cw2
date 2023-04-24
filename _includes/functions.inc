@@ -1,6 +1,7 @@
 <?php
 
 include "passwordLib.php";
+include "student.php";
 
 /**
  * Validate Login function
@@ -55,6 +56,20 @@ function template( $file, $args=array() ){
    ob_start();
    include $file;
    return ob_get_clean();
+}
+
+/**
+ * Creates a student object according to result fetched from database
+ */
+function createStudent($row)
+{
+   $student = new Student();
+   $student->set_name($row['firstname'] . " " . $row['lastname']); 
+   $student->set_id($row['studentid']);
+   $student->set_dob($row['dob']);
+   $student->set_address($row['house'] . ", " . $row['town'] . ", " . $row['county'] . ", " . $row['postcode'] . ", " . $row['country']);
+
+   return $student;
 }
 
 ?>
