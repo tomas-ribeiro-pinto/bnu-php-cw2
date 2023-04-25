@@ -2,7 +2,7 @@
 
     include("_includes/dbconnect.inc");
 
-    function seedDatabse()
+    function seedDatabase()
     {
         global $conn;
         $sql = "select * from student;";
@@ -25,8 +25,8 @@
         VALUES ('20000005', '" . password_hash("test", PASSWORD_DEFAULT) . "', '2006-09-06', 'James', 'Kirk', '58 Oxford Street', 'Slough', 'London', 'UK', 'SL09 2ET');";
                 
 
-        // Check if the query has only the initial student configured
-        if(mysqli_num_rows($result) == 1 && $row['studentid'] == 20000000)
+        // Check if the query only has the initial student configured
+        if(mysqli_num_rows($result) <= 1)
         {
             mysqli_query($conn,$student1);
             mysqli_query($conn,$student2);

@@ -6,7 +6,7 @@
    include("seed.php");
 
    //Seed Database if empty
-   seedDatabse();
+   seedDatabase();
 
    echo template("templates/partials/header.php");
 
@@ -17,9 +17,7 @@
    }
 
    if (isset($_SESSION['id'])) {
-      $data['content'] = "<p>Welcome to your dashboard.";
-      echo template("templates/partials/nav.php");
-      echo template("templates/default.php", $data);
+      header("Location: modules.php");
    } else {
       echo template("templates/login.php", $data);
    }

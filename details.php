@@ -11,6 +11,14 @@ if (isset($_SESSION['id'])) {
    echo template("templates/partials/header.php");
    echo template("templates/partials/nav.php");
 
+   echo "<div class='container-fluid'>
+   <div class='d-sm-flex justify-content-between align-items-center mb-4'>
+      <h2 class='text-dark mb-0'>Profile Details</h2>
+   </div>
+   <div class='row'>
+      <div style='height:30em;' class='col-lg-6 mb-4 overflow-auto'>";
+         
+
    // if the form has been submitted
    if (isset($_POST['submit'])) {
       
@@ -42,7 +50,6 @@ if (isset($_SESSION['id'])) {
       $result = mysqli_query($conn,$sql);
       $row = mysqli_fetch_array($result);
 
-      echo "<h2>My Details</h2>";
       if(!empty($row['photo']))
          echo "<img src='templates/getjpg.php' height='150'</td>";
 
@@ -52,24 +59,25 @@ if (isset($_SESSION['id'])) {
       $data['content'] = <<<EOD
    
    <form name="frmdetails" enctype="multipart/form-data" action="" method="post">
-   Student Picture :
-   <input type="file" name="photo" accept="image/jpeg"/><br/>
-   First Name :
-   <input name="txtfirstname" type="text" value="{$row['firstname']}" /><br/>
-   Surname :
-   <input name="txtlastname" type="text"  value="{$row['lastname']}" /><br/>
-   Number and Street :
-   <input name="txthouse" type="text"  value="{$row['house']}" /><br/>
-   Town :
-   <input name="txttown" type="text"  value="{$row['town']}" /><br/>
-   County :
-   <input name="txtcounty" type="text"  value="{$row['county']}" /><br/>
-   Country :
-   <input name="txtcountry" type="text"  value="{$row['country']}" /><br/>
-   Postcode :
-   <input name="txtpostcode" type="text"  value="{$row['postcode']}" /><br/>
-   <input type="submit" value="Save" name="submit"/>
+   <label for="photo" class="form-label mt-2">Student Picture</label>
+   <input class="form-control" type="file" name="photo" accept="image/jpeg"/>
+   <label for="txtfirstname" class="form-label mt-2">First Name</label>
+   <input class="form-control" name="txtfirstname" type="text" value="{$row['firstname']}" />
+   <label for="txtlastname" class="form-label mt-2">Surname</label>
+   <input class="form-control" name="txtlastname" type="text"  value="{$row['lastname']}" />
+   <label for="txthouse" class="form-label mt-2">Street</label>
+   <input class="form-control" name="txthouse" type="text"  value="{$row['house']}" />
+   <label for="txttown" class="form-label mt-2">Town</label>
+   <input class="form-control" name="txttown" type="text"  value="{$row['town']}" />
+   <label for="txtcounty" class="form-label mt-2">County</label>
+   <input class="form-control" name="txtcounty" type="text"  value="{$row['county']}" />
+   <label for="txtcountry" class="form-label mt-2">Country</label>
+   <input class="form-control" name="txtcountry" type="text"  value="{$row['country']}" />
+   <label for="txtpostcode" class="form-label mt-2">Postcode</label>
+   <input class="form-control" name="txtpostcode" type="text"  value="{$row['postcode']}" /><br/>
+   <input class="btn btn-warning float-right" type="submit" value="Save Details" name="submit"/>
    </form>
+   </div></div></div></div></div></div>
 
 EOD;
 
