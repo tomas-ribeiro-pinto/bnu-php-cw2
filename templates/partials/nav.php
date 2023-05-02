@@ -21,8 +21,8 @@ $name = $row['firstname'];
                 <hr class="sidebar-divider my-2">
                 <ul class="navbar-nav text-light" id="accordionSidebar">
                     <li class="nav-item"><a class="nav-link active" href="modules.php"><i class="fas fa-tachometer-alt mx-2"></i><span>Dashboard</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="details.php"><i class="fas fa-user mx-2"></i><span>Profile</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="assignmodule.php"><i class="fas fa-table mx-2"></i><span>Assign Module</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="details.php"><i class="fas fa-user mx-2"></i><span>Profile</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="logout.php"><i class="fas fa-arrow-left mx-2"></i><span>Logout</span></a></li>
                     <li class="nav-item"></li>
                 </ul>

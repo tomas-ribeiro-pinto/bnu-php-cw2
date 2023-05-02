@@ -29,7 +29,8 @@ if (isset($_SESSION['id'])) {
       $sql .= "town ='" . $_POST['txttown']  . "',";
       $sql .= "county ='" . $_POST['txtcounty']  . "',";
       $sql .= "country ='" . $_POST['txtcountry']  . "',";
-      $sql .= "postcode ='" . $_POST['txtpostcode']  . "' ";
+      $sql .= "postcode ='" . $_POST['txtpostcode']  . "',";
+      $sql .= "photo = NULL ";
       $sql .= "where studentid = '" . $_SESSION['id'] . "';";
       $result = mysqli_query($conn,$sql);
 
