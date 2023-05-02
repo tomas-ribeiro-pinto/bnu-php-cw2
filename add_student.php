@@ -7,16 +7,16 @@
 
     if(isset($_POST['submit']))
     {
-        $fname = real_escape_string($_POST['fname']);
-        $lname = real_escape_string($_POST['lname']);
-        $id = real_escape_string($_POST['id']);
-        $dob = real_escape_string($_POST['dob']);
-        $house = real_escape_string($_POST['house']);
-        $town = real_escape_string($_POST['town']);
-        $county = real_escape_string($_POST['county']);
-        $country = real_escape_string($_POST['country']);
-        $postcode = real_escape_string($_POST['postcode']);
-        $pwd = real_escape_string($_POST['pwd']);
+        $fname = mysqli_real_escape_string($conn, $_POST['fname']);
+        $lname = mysqli_real_escape_string($conn, $_POST['lname']);
+        $id = mysqli_real_escape_string($conn, $_POST['id']);
+        $dob = mysqli_real_escape_string($conn, $_POST['dob']);
+        $house = mysqli_real_escape_string($conn, $_POST['house']);
+        $town = mysqli_real_escape_string($conn, $_POST['town']);
+        $county = mysqli_real_escape_string($conn, $_POST['county']);
+        $country = mysqli_real_escape_string($conn, $_POST['country']);
+        $postcode = mysqli_real_escape_string($conn, $_POST['postcode']);
+        $pwd = mysqli_real_escape_string($conn, $_POST['pwd']);
 
         // Obtain the file sent to the server within the response.
         $photo = $_FILES['photo']['tmp_name']; 

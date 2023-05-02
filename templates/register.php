@@ -11,30 +11,30 @@
                   <div style="height:30em;" class="card-body d-flex flex-column align-items-center overflow-auto">
                      <form name="frmRegister" enctype="multipart/form-data" action="add_student.php" method="post">
                         Student Picture :
-                        <input type="file" name="photo" accept="image/jpeg" class="form-control" required/>
+                        <input type="file" name="photo" accept="image/jpeg" class="form-control"/>
                         Student ID:
-                        <input class="form-control" name="id" type="text" />
+                        <input class="form-control" name="id" type="text" required/>
                         First Name:
-                        <input class="form-control" name="fname" type="text" />
+                        <input class="form-control" name="fname" type="text" required/>
                         Last Name:
-                        <input class="form-control" name="lname" type="text" />
+                        <input class="form-control" name="lname" type="text" required/>
                         Date of Birth:
-                        <input class="form-control" name="dob" type="date" />
+                        <input class="form-control" name="dob" type="date" required/>
                         <br/>
                         Address:
                         House:
-                        <input class="form-control" name="house" type="txt" />
+                        <input class="form-control" name="house" type="text" required/>
                         Town:
-                        <input class="form-control" name="town" type="txt" />
+                        <input class="form-control" name="town" type="text" required/>
                         County:
-                        <input class="form-control" name="county" type="txt" />
+                        <input class="form-control" name="county" type="text" required/>
                         Country:
-                        <input class="form-control" name="country" type="txt" />
+                        <input class="form-control" name="country" type="text" required/>
                         Postcode:
-                        <input class="form-control" name="postcode" type="txt" />
+                        <input class="form-control" name="postcode" type="text" required/>
                         <br/>
                         Password:
-                        <input class="form-control" name="pwd" type="password" />
+                        <input class="form-control" name="pwd" type="password" required/>
                         <br/>
                         <div class="d-flex">
                            <a class="btn btn-danger w-100 m-2" href="index.php">Cancel</a>

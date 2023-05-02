@@ -23,13 +23,13 @@ if (isset($_SESSION['id'])) {
    if (isset($_POST['submit'])) {
       
       // build an sql statment to update the student details
-      $sql = "update student set firstname ='" . real_escape_string($_POST['txtfirstname']) . "',";
-      $sql .= "lastname ='" . real_escape_string($_POST['txtlastname'])  . "',";
-      $sql .= "house ='" . real_escape_string($_POST['txthouse'])  . "',";
-      $sql .= "town ='" . real_escape_string($_POST['txttown'])  . "',";
-      $sql .= "county ='" . real_escape_string($_POST['txtcounty'])  . "',";
-      $sql .= "country ='" . real_escape_string($_POST['txtcountry'])  . "',";
-      $sql .= "postcode ='" . real_escape_string($_POST['txtpostcode'])  . "',";
+      $sql = "update student set firstname ='" . mysqli_real_escape_string($conn, $_POST['txtfirstname']) . "',";
+      $sql .= "lastname ='" . mysqli_real_escape_string($conn, $_POST['txtlastname'])  . "',";
+      $sql .= "house ='" . mysqli_real_escape_string($conn, $_POST['txthouse'])  . "',";
+      $sql .= "town ='" . mysqli_real_escape_string($conn, $_POST['txttown'])  . "',";
+      $sql .= "county ='" . mysqli_real_escape_string($conn, $_POST['txtcounty'])  . "',";
+      $sql .= "country ='" . mysqli_real_escape_string($conn, $_POST['txtcountry'])  . "',";
+      $sql .= "postcode ='" . mysqli_real_escape_string($conn, $_POST['txtpostcode'])  . "',";
       $sql .= "photo = NULL ";
       $sql .= "where studentid = '" . $_SESSION['id'] . "';";
       $result = mysqli_query($conn,$sql);
@@ -52,7 +52,7 @@ if (isset($_SESSION['id'])) {
       $row = mysqli_fetch_array($result);
 
       if(!empty($row['photo']))
-         echo "<img src='templates/getjpg.php' height='150'</td>";
+         echo "<img src='templates/getjpg.php?id=" . $_SESSION['id'] . "' height='150'</td>";
 
       // using <<<EOD notation to allow building of a multi-line string
       // see http://stackoverflow.com/questions/6924193/what-is-the-use-of-eod-in-php for info
@@ -63,19 +63,19 @@ if (isset($_SESSION['id'])) {
    <label for="photo" class="form-label mt-2">Student Picture</label>
    <input class="form-control" type="file" name="photo" accept="image/jpeg"/>
    <label for="txtfirstname" class="form-label mt-2">First Name</label>
-   <input class="form-control" name="txtfirstname" type="text" value="{$row['firstname']}" />
+   <input class="form-control" name="txtfirstname" type="text" value="{$row['firstname']}" disabled/>
    <label for="txtlastname" class="form-label mt-2">Surname</label>
-   <input class="form-control" name="txtlastname" type="text"  value="{$row['lastname']}" />
+   <input class="form-control" name="txtlastname" type="text"  value="{$row['lastname']}" disabled/>
    <label for="txthouse" class="form-label mt-2">Street</label>
-   <input class="form-control" name="txthouse" type="text"  value="{$row['house']}" />
+   <input class="form-control" name="txthouse" type="text"  value="{$row['house']}" required/>
    <label for="txttown" class="form-label mt-2">Town</label>
-   <input class="form-control" name="txttown" type="text"  value="{$row['town']}" />
+   <input class="form-control" name="txttown" type="text"  value="{$row['town']}" required/>
    <label for="txtcounty" class="form-label mt-2">County</label>
-   <input class="form-control" name="txtcounty" type="text"  value="{$row['county']}" />
+   <input class="form-control" name="txtcounty" type="text"  value="{$row['county']}" required/>
    <label for="txtcountry" class="form-label mt-2">Country</label>
-   <input class="form-control" name="txtcountry" type="text"  value="{$row['country']}" />
+   <input class="form-control" name="txtcountry" type="text"  value="{$row['country']}" required/>
    <label for="txtpostcode" class="form-label mt-2">Postcode</label>
-   <input class="form-control" name="txtpostcode" type="text"  value="{$row['postcode']}" /><br/>
+   <input class="form-control" name="txtpostcode" type="text"  value="{$row['postcode']}" required/><br/>
    <input class="btn btn-warning float-right" type="submit" value="Save Details" name="submit"/>
    </form>
    </div></div></div></div></div></div>

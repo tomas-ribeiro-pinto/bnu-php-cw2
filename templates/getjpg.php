@@ -7,7 +7,7 @@
 
   global $conn;
 
-  $sql = "SELECT photo FROM student WHERE studentid='" . $_SESSION['id'] . "';";
+  $sql = "SELECT photo FROM student WHERE studentid='" . $_GET['id'] . "';";
 
   $result = mysqli_query($conn, $sql);
   $row = mysqli_fetch_array($result);

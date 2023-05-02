@@ -2,13 +2,14 @@
 
 global $conn;
 
-$sql = "SELECT firstname,is_admin FROM student WHERE studentid='" . $_SESSION['id'] . "';";
+$sql = "SELECT * FROM student WHERE studentid='" . $_SESSION['id'] . "';";
 
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_array($result);
 
 $name = $row['firstname'];
 $is_admin = $row['is_admin'];
+$id = $row['studentid'];
 ?>
 
 <div style="font-size:1.3em;" class="d-flex h-100" id="wrapper">
@@ -26,6 +27,7 @@ $is_admin = $row['is_admin'];
                         if($is_admin)
                         {
                             echo "<li class='nav-item'><a class='nav-link' href='students.php'><i class='fas fa-list mx-2'></i></i><span>All Students</span></a></li>";
+                            echo "<li class='nav-item'><a class='nav-link' href='addstudent.php'><i class='fas fa-folder-plus mx-2'></i></i><span>Add Student</span></a></li>";
                         }
                     ?>
                     <li class="nav-item"><a class="nav-link" href="assignmodule.php"><i class="fas fa-table mx-2"></i><span>Assign Module</span></a></li>
@@ -45,7 +47,7 @@ $is_admin = $row['is_admin'];
                         </form>
                         <ul class="navbar-nav flex-nowrap ms-auto">
                             <li class="nav-item dropdown no-arrow">
-                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><span class="text-dark" style="margin-right: 0.5em;">Hello <?php echo $name ?>!</span><img class="border rounded-circle" src="templates/getjpg.php" style="height:35px; width:35px;"></a>
+                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><span class="text-dark" style="margin-right: 0.5em;">Hello <?php echo $name ?>!</span><?php echo "<img class='border rounded-circle' src='templates/getjpg.php?id=" . $id . "'style='height:35px; width:35px;'></a>";?>
                                     <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in"><a class="dropdown-item" href="details.php"><i class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Profile</a>
                                         <div class="dropdown-divider"></div><a class="dropdown-item" href="logout.php"><i class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Logout</a>
                                     </div>

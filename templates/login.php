@@ -14,8 +14,8 @@
                         </svg></div>
                      <form name="frmLogin" action="authenticate.php" method="post">
                         <?php echo $message ?>
-                        <div class="mb-3"><input class="form-control" type="text" name="txtid" placeholder="Student ID"></div>
-                        <div class="mb-3"><input class="form-control" type="password" name="txtpwd" placeholder="Password"></div>
+                        <div class="mb-3"><input class="form-control" type="text" name="txtid" placeholder="Student ID" required></div>
+                        <div class="mb-3"><input class="form-control" type="password" name="txtpwd" placeholder="Password" required></div>
                         <div class="mb-3"><button class="btn btn-dark w-100" type="submit" name="btnlogin">Login</button></div>
                         <div class="mb-3 text-center"><a href="addstudent.php">Register</a></div>
                      </form>
