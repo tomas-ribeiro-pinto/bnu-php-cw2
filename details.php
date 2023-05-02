@@ -11,12 +11,12 @@ if (isset($_SESSION['id'])) {
    echo template("templates/partials/header.php");
    echo template("templates/partials/nav.php");
 
-   echo "<div class='container-fluid'>
+   echo "<div style='height:30em;' class='container-fluid overflow-auto'>
    <div class='d-sm-flex justify-content-between align-items-center mb-4'>
       <h2 class='text-dark mb-0'>Profile Details</h2>
    </div>
    <div class='row'>
-      <div style='height:30em;' class='col-lg-6 mb-4 overflow-auto'>";
+      <div class='col-lg-6 mb-4'>";
          
 
    // if the form has been submitted
