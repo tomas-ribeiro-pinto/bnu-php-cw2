@@ -7,16 +7,16 @@
 
     if(isset($_POST['submit']))
     {
-        $fname = $_POST['fname'];
-        $lname = $_POST['lname'];
-        $id = $_POST['id'];
-        $dob = $_POST['dob'];
-        $house = $_POST['house'];
-        $town = $_POST['town'];
-        $county = $_POST['county'];
-        $country = $_POST['country'];
-        $postcode = $_POST['postcode'];
-        $pwd = $_POST['pwd'];
+        $fname = real_escape_string($_POST['fname']);
+        $lname = real_escape_string($_POST['lname']);
+        $id = real_escape_string($_POST['id']);
+        $dob = real_escape_string($_POST['dob']);
+        $house = real_escape_string($_POST['house']);
+        $town = real_escape_string($_POST['town']);
+        $county = real_escape_string($_POST['county']);
+        $country = real_escape_string($_POST['country']);
+        $postcode = real_escape_string($_POST['postcode']);
+        $pwd = real_escape_string($_POST['pwd']);
 
         // Obtain the file sent to the server within the response.
         $photo = $_FILES['photo']['tmp_name']; 

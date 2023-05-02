@@ -23,13 +23,13 @@ if (isset($_SESSION['id'])) {
    if (isset($_POST['submit'])) {
       
       // build an sql statment to update the student details
-      $sql = "update student set firstname ='" . $_POST['txtfirstname'] . "',";
-      $sql .= "lastname ='" . $_POST['txtlastname']  . "',";
-      $sql .= "house ='" . $_POST['txthouse']  . "',";
-      $sql .= "town ='" . $_POST['txttown']  . "',";
-      $sql .= "county ='" . $_POST['txtcounty']  . "',";
-      $sql .= "country ='" . $_POST['txtcountry']  . "',";
-      $sql .= "postcode ='" . $_POST['txtpostcode']  . "',";
+      $sql = "update student set firstname ='" . real_escape_string($_POST['txtfirstname']) . "',";
+      $sql .= "lastname ='" . real_escape_string($_POST['txtlastname'])  . "',";
+      $sql .= "house ='" . real_escape_string($_POST['txthouse'])  . "',";
+      $sql .= "town ='" . real_escape_string($_POST['txttown'])  . "',";
+      $sql .= "county ='" . real_escape_string($_POST['txtcounty'])  . "',";
+      $sql .= "country ='" . real_escape_string($_POST['txtcountry'])  . "',";
+      $sql .= "postcode ='" . real_escape_string($_POST['txtpostcode'])  . "',";
       $sql .= "photo = NULL ";
       $sql .= "where studentid = '" . $_SESSION['id'] . "';";
       $result = mysqli_query($conn,$sql);
@@ -38,11 +38,11 @@ if (isset($_SESSION['id'])) {
       {
          $photo = $_FILES["photo"]["tmp_name"]; 
          $imagedata = addslashes(fread(fopen($photo, "r"), filesize($photo)));
-         $sql .= "update student set photo = '" . $imagedata ."' where studentid = '" . $_SESSION['id'] . "';";
-         $result = mysqli_query($conn,$sql);
+         $sql1 = "update student set photo = '" . $imagedata ."' where studentid = '" . $_SESSION['id'] . "';";
+         $result = mysqli_query($conn,$sql1);
       }
 
-      $data['content'] = "<p>Your details have been updated</p>";
+      $data['content'] = "<p>Your details have been updated</p></div></div></div></div></div></div>";
    }
    else {
       // Build a SQL statment to return the student record with the id that
