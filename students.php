@@ -14,7 +14,7 @@
      
         echo "<div class='container-fluid'>
         <div class='d-sm-flex justify-content-between align-items-center mb-4'>
-           <h2 class='text-dark mb-0'>Profile Details</h2>
+           <h2 class='text-dark mb-0'>All Students</h2>
         </div>
         <div class='row'>
            <div style='height:25em;' class='col-lg-12 mb-4 overflow-auto'>";
