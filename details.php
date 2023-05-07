@@ -23,9 +23,7 @@ if (isset($_SESSION['id'])) {
    if (isset($_POST['submit'])) {
       
       // build an sql statment to update the student details
-      $sql = "update student set firstname ='" . mysqli_real_escape_string($conn, $_POST['txtfirstname']) . "',";
-      $sql .= "lastname ='" . mysqli_real_escape_string($conn, $_POST['txtlastname'])  . "',";
-      $sql .= "house ='" . mysqli_real_escape_string($conn, $_POST['txthouse'])  . "',";
+      $sql = "update student set house ='" . mysqli_real_escape_string($conn, $_POST['txthouse'])  . "',";
       $sql .= "town ='" . mysqli_real_escape_string($conn, $_POST['txttown'])  . "',";
       $sql .= "county ='" . mysqli_real_escape_string($conn, $_POST['txtcounty'])  . "',";
       $sql .= "country ='" . mysqli_real_escape_string($conn, $_POST['txtcountry'])  . "',";
